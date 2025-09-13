@@ -1,0 +1,26 @@
+<h1>ドラマ一覧</h1>
+
+<%= form_with url: dramas_path, method: :get, local: true do %>
+  <%= text_field_tag :title, params[:title], placeholder: "タイトルで検索" %>
+  <%= text_field_tag :cast, params[:cast], placeholder: "俳優名で検索"%>
+  <%= serect_tag :emotion,
+         options_for_select(["笑い", "胸キュン", "癒し", "共感"], params[:emotion]),
+         include_blank: "気分を選ぶ" %>
+<% end %>
+
+<% @dramas.each do |drama| %>
+  <p><%= drama.title %></p>
+<% end %>
+
+<!-- 検索結果 -->
+<% if @dramas.any? %>
+  <p>検索結果：<%= @dramas.count %>件</p>
+  <% @dramas.each do |drama| %>
+    <div>
+      <h3><%= link_to drama.title, drama_path(drama) %></h3>
+      <p><%= drama.casts %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>該当するドラマはありませんでした。</p>
+<% end %>

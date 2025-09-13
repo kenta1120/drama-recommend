@@ -1,0 +1,76 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #001f3f, #003366);
+  color: #fff;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.btn-main {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #ffcc00;
+  color: #001f3f;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 50px auto;
+  max-width: 900px;
+}
+
+.card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  flex: 1;
+}
+
+.card strong {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  text-align: left;
+  line-height: 1.8;
+  font-size: 1.0rem;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .card {
+    width: 90%;
+    max-width: none;
+  }
+
+  .hero {
+    padding: 50px 20px;
+  }
+}

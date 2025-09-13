@@ -11,3 +11,19 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener("turbolinks:load", () => {
+  const button = document.getElementById("dropdown-button");
+  const menu = document.getElementById("dropdown-menu");
+
+  if (button && menu) {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.classList.toggle("show");
+    });
+  }
+
+  document.addEventListener("click", () => {
+    menu.classList.remove("show");
+  })
+})
