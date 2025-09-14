@@ -1,0 +1,33 @@
+ja:
+  devise:
+    sessions:
+      new:
+        sign_in: "ログイン"
+    registrations:
+      new:
+        sign_up: "新規登録"
+        password_hint: "(%{count}文字以上)"
+      edit:
+        leave_blank_if_you_don_t_want_to_change_it: "変更したくない場合は空白のままにしてください"
+        we_need_your_current_password_to_confirm_your_changes: "変更を確認するために現在のパスワードが必要です"
+    passwords:
+      new:
+        forgot_your_password: "パスワードをお忘れですか？"
+      edit:
+        change_your_password: "パスワードを変更する"
+    confirmations:
+      new:
+        resend_confirmation_instructions: "確認メールを再送する"
+    shared:
+      links:
+        sign_in: "ログイン"
+        sign_up: "新規登録"
+        forgot_your_password: "パスワードをお忘れですか？"
+
+  activerecord:
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用)"
+        remember_me: "ログイン状態を保持"

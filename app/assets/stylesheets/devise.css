@@ -1,0 +1,15 @@
+/* フォーム下のログインリンク */
+.form-container .links {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.form-container .links a {
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-container .links a:hover {
+  text-decoration: underline;
+}
