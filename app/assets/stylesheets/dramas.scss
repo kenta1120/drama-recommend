@@ -1,3 +1,154 @@
 // Place all the styles related to the Dramas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.drama-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.drama-container h1 {
+  margin-bottom: 20px;
+}
+
+/* 検索フォーム */
+.search-form {
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.search-form input {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-form input[type="submit"] {
+  background-color: rgb(36, 200, 36);
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.search-form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* ドラマリスト */
+.drama-list {
+  max-width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 20px auto;
+  background-color: #fafafa;
+}
+
+/* ドラマリストのタイトル */
+.drama-list h3 {
+  font-size: 20px;
+  margin: 0 0 6px;
+  font-weight: bold;
+}
+
+.drama-list h3 a {
+  text-decoration: none;
+  color: #2c3c50;
+}
+
+/* ドラマリストのジャンル・タグ */
+.drama-list p {
+  font-size: 15px;
+  color: #555;
+  margin: 2px 0;
+}
+
+/* ドラマ詳細ページ */
+.drama-show {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgb(61, 119, 226);
+  border-radius: 12px;
+  line-height: 1.8;
+}
+
+.drama-show h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.drama-show p {
+  display: flex;
+  margin: 6px 0;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: white;
+  justify-content: center;
+  gap: 15px;
+}
+
+.drama-show p strong {
+  color: #222;
+}
+
+/* 詳細ページのボタン */
+.drama-actions {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* フォーム全体(新規登録・編集) */
+.drama-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.drama-form h1 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/* 各フォームの要素 */
+.form-element {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-element label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.form-element input,
+.form-element select,
+.form-element textarea {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* アクションボタン */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}

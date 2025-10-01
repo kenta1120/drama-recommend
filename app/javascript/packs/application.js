@@ -24,6 +24,9 @@ document.addEventListener("turbolinks:load", () => {
   }
 
   document.addEventListener("click", () => {
-    menu.classList.remove("show");
+    const menu = document.getElementById("dropdown-menu");
+    if (menu){
+      menu.classList.remove("show");
+    }
   })
 })

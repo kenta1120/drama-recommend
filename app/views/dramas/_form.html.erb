@@ -1,0 +1,36 @@
+<%= form_with model: drama, local: true do |f| %>
+  <div class="form-element" >
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="form-element" >
+    <%= f.label :genre, "ジャンル" %>
+    <%= f.select :genre, Drama::GENRES, { prompt: "選択してください" } %>
+  </div>
+
+  <div class="form-element" >
+    <%= f.label :mood, "感情タグ" %>
+    <%= f.text_field :mood %>
+  </div>
+
+  <div class="form-element" >
+    <%= f.label :scene, "生活シーンタグ" %>
+    <%= f.text_field :scene %>
+  </div>
+
+  <div class="form-element" >
+    <%= f.label :description, "感想" %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="form-element">
+    <%= f.label :is_public, "公開する" %>
+    <%= f.check_box :is_public %>
+  </div>
+
+  <div class="form-actions" >
+    <%= f.submit "保存", class: "btn btn-primary" %>
+    <%= link_to "一覧に戻る", dramas_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

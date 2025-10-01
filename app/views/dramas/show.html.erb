@@ -1,2 +1,16 @@
-<h1>Dramas#show</h1>
-<p>Find me in app/views/dramas/show.html.erb</p>
+<div class="drama-show">
+  <h1><%= @drama.title %></h1>
+  <p><strong>ジャンル: </strong> <%= @drama.genre %></p>
+  <p><strong>感想: </strong> <%= @drama.description %></p>
+  <p><strong>気分: </strong> <%= @drama.mood %></p>
+  <p><strong>シーン: </strong> <%= @drama.scene %></p>
+  <p><strong>公開状態: </strong><%= @drama.is_public? ? "公開中" : "非公開" %></p>
+
+  <div class="drama-actions">
+    <% if @drama.user == current_user %>
+      <%= link_to "編集", edit_drama_path(@drama), class: "btn btn-primary" %>
+      <%= link_to "削除", drama_path(@drama), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-delete" %>
+    <% end %>
+    <%= link_to "一覧に戻る", dramas_path, class: "btn btn-secondary" %>
+  </div>
+</div>
