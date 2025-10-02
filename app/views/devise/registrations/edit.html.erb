@@ -43,5 +43,7 @@
 
 <div>ご利用をやめますか？ <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか？", turbo_confirm: "本当に削除してもよろしいですか？" }, method: :delete %></div>
 
-<%= link_to "戻る", :back, class: "btn btn-secondary" %>
+<div class="back-section">
+  <%= link_to "戻る", :back, class: "btn btn-secondary" %>
+</div>
 </div>

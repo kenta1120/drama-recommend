@@ -1,26 +1,32 @@
-<h1>ドラマ一覧</h1>
+<div class="drama-container">
+  <h1>ドラマ一覧</h1>
 
-<%= form_with url: dramas_path, method: :get, local: true do %>
-  <%= text_field_tag :title, params[:title], placeholder: "タイトルで検索" %>
-  <%= text_field_tag :cast, params[:cast], placeholder: "俳優名で検索"%>
-  <%= serect_tag :emotion,
-         options_for_select(["笑い", "胸キュン", "癒し", "共感"], params[:emotion]),
-         include_blank: "気分を選ぶ" %>
-<% end %>
+  <%= link_to "ドラマを新規登録する", new_drama_path, class: "btn btn-primary" %>
 
-<% @dramas.each do |drama| %>
-  <p><%= drama.title %></p>
-<% end %>
-
-<!-- 検索結果 -->
-<% if @dramas.any? %>
-  <p>検索結果：<%= @dramas.count %>件</p>
-  <% @dramas.each do |drama| %>
-    <div>
-      <h3><%= link_to drama.title, drama_path(drama) %></h3>
-      <p><%= drama.casts %></p>
+<!-- --- 検索フォーム --- -->
+  <%= form_with url: dramas_path, method: :get, local: true do %>
+    <div class="search-form">
+      <%= text_field_tag :title, params[:title], placeholder: "タイトルで検索" %>
+      <%= select_tag :genre, options_for_select(Drama::GENRES, params[:genre]), include_blank: "ジャンルで検索" %>
+      <%= select_tag :mood, options_for_select(Drama::MOODS, params[:mood]), include_blank: "感情タグで検索" %>
+      <%= submit_tag "検索" %>
     </div>
   <% end %>
-<% else %>
-  <p>該当するドラマはありませんでした。</p>
-<% end %>
+
+<!-- 検索結果・一覧 -->
+  <% if @dramas.any? %>
+    <p class="search-result">検索結果：<%= @dramas.count %>件</p>
+    <% @dramas.each do |drama| %>
+      <div class="drama-list">
+        <h3><%= link_to drama.title, drama_path(drama) %></h3>
+        <p>ジャンル：<%= drama.genre %></p>
+        <p>感情タグ：<%= drama.mood %></p>
+        <p>どんな時に見るのがオススメ？：<%= drama.scene %></p>
+        <p>感想：<%= truncate(drama.description, length: 50) %></p>
+        <p>公開状態：<%= drama.is_public? ? "公開中" : "非公開" %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>該当するドラマはありませんでした。</p>
+  <% end %>
+</div>

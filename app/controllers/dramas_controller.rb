@@ -1,41 +1,55 @@
 class DramasController < ApplicationController
-  def index
-    @dramas = Drama.all
-    @dramas = @dramas.title_search(params[:title])
-    @dramas = @dramas.cast_search(params[:cast])
-    @dramas = @dramas.emotion_search(params[:emotion])
-  end
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_drama, only: [:show, :edit, :update, :destroy]
+  before_action :set_dramas_scope, only: [:index]
+  
+  def index; end
 
-  def show
-  end
+  def show; end
 
   def new
+    @drama = Drama.new
   end
 
   def create
+    @drama = current_user.dramas.new(drama_params)
+    if @drama.save
+      redirect_to @drama, notice: "ドラマを登録しました"
+    else
+      render :new
+    end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    if @drama.update(drama_params)
+      redirect_to @drama, notice: "ドラマを更新しました"
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @drama.destroy
+    redirect_to dramas_path, notice: "ドラマを削除しました"
   end
 
-  def recommend
-    emotion_counts current_user.watched_dramas
-                               .joins(:tags)
-                               .group("tags.name")
-                               .count
-    
-    emotions = ["笑い", "胸キュン", "癒し", "共感"]
-    emotion_counts = emotions.map { |e| [e, emotion_counts[e] || 0] }.to_h
+  private
 
-    @lacking_emotion = emotion_counts.min_by { |_, count| count }.first
-    @recommend_dramas = Drama.joins(:tags)
-                             .where(tags: { name: @lacking_emotion})
-                             .limit(5)
+  def set_drama
+    @drama = Drama.find(params[:id])
+  end
+
+  def set_dramas_scope
+    drama_scope = user_signed_in? ? current_user.dramas : Drama.public_dramas
+    @dramas = drama_scope
+                .title_search(params[:title])
+                .genre_search(params[:genre])
+                .mood_search(params[:mood])
+  end
+
+  def drama_params
+    params.require(:drama).permit(:title, :genre, :description, :mood, :scene, :is_public)
   end
 end

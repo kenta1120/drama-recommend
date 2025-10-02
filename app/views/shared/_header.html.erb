@@ -1,0 +1,35 @@
+<header>
+  <div class="header-left">
+    <%= link_to "DramaMemo", root_path, class: "logo" %>
+  </div>
+
+  <nav>
+    <% if user_signed_in? %>
+      <div class="dropdown">
+        <div class="user-info">
+          <% if current_user.respond_to?(:avatar) && current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, class: "avatar-image" %>
+          <% else %>
+            <%= image_tag "default-avatar.png", class: "avatar-icon" %>
+          <% end %>
+            <button class="dropdown-toggle" id="dropdown-button">
+              <%= current_user.name || current_user.email %>
+            </button>
+        </div>
+
+        <div class="dropdown-menu" id="dropdown-menu">
+          <p>こんにちは、<%= current_user.email %>さん</p>
+          <%= link_to "アカウント編集", edit_user_registration_path %>
+          <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+          <%= link_to "ドラマ登録一覧", dramas_path %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </div>
+      </div>
+    <% else %>
+      <div class="nav-links">
+        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "新規登録", new_user_registration_path %>
+      </div>
+    <% end %>
+  </nav>
+</header>
