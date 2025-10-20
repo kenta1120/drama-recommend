@@ -1,0 +1,65 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'Dockerfile.dev'
+    - 'Gemfile.lock'
+    - 'Rakefile'
+    - 'config.ru'
+
+Rails:
+  Enabled: true
+
+RSpec:
+  Enabled: true
+
+LineLength:
+  Max: 130
+
+BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Documentation:
+  Enabled: false
+
+FrozenStringLiteralComment:
+  Enabled: false
+
+MethodLength:
+  Max: 20
+
+ClassLength:
+  Max: 150
+
+AbcSize:
+  Max: 20
+
+ExampleLength:
+  Max: 15
+
+MultipleExpectations:
+  Max: 3
+
+VariableNumber:
+  Enabled: false
+
+SymbolArray:
+  Enabled: false
+
+I18nLocaleTexts:
+  Enabled: false
+
+StringLiterals:
+  Enabled: false
+
+Lambda:
+  EnforcedStyle: literal

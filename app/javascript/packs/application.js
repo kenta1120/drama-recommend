@@ -30,3 +30,14 @@ document.addEventListener("turbolinks:load", () => {
     }
   })
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+  const flash = document.querySelector(".notice, .alert");
+  if (flash) {
+    setTimeout(() => {
+      flash.style.transition = "opacity 0.5s";
+      flash.style.opacity = 0;
+      setTimeout(() => flash.remove(), 500);
+    }, 3000);
+  }
+});

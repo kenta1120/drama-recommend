@@ -261,3 +261,27 @@ footer {
   color: #666;
   font-size: 14px;
 }
+
+/* フラッシュメッセージ共通 */
+.notice, .alert {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 10px auto;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* notice */
+.notice {
+  background-color: rgb(166, 243, 243);
+  color: black;
+  border: 1px solid black;
+}
+
+/* alert */
+.alert {
+  background-color: pink;
+  color: black;
+  border: 1px solid black;
+}
