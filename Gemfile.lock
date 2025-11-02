@@ -180,7 +180,7 @@ GEM
     puma (5.6.9)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.20)
+    rack (2.2.21)
     rack-mini-profiler (2.3.4)
       rack (>= 1.2.0)
     rack-proxy (0.7.7)
@@ -351,9 +351,6 @@ DEPENDENCIES
   factory_bot_rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  net-imap
-  net-pop
-  net-smtp
   pg (~> 1.1)
   psych (~> 3.1)
   puma (~> 5.0)
