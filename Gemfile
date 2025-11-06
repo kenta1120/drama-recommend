@@ -68,3 +68,6 @@ gem 'devise'
 
 gem 'devise-i18n'
 gem 'rails-i18n'
+
+gem "net-protocol", ">= 0.2.2"
+gem "net-pop", ">= 0.1.2"
