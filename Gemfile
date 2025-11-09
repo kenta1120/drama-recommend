@@ -68,3 +68,8 @@ gem 'devise'
 
 gem 'devise-i18n'
 gem 'rails-i18n'
+
+gem "net-pop", ">= 0.1.2"
+gem "net-protocol", ">= 0.2.2"
+gem "net-imap", ">= 0.5.12"
+gem "net-smtp", ">= 0.5.1"
