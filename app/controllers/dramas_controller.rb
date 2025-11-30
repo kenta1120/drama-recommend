@@ -31,8 +31,12 @@ class DramasController < ApplicationController
   end
 
   def destroy
-    @drama.destroy
-    redirect_to dramas_path, notice: "ドラマを削除しました"
+    if @drama.user == current_user
+      @drama.destroy
+      redirect_to dramas_path, notice: "ドラマを削除しました"
+    else
+      redirect_to dramas_path, alert: "削除できませんでした"
+    end
   end
 
   private
@@ -47,9 +51,10 @@ class DramasController < ApplicationController
               .title_search(params[:title])
               .genre_search(params[:genre])
               .mood_search(params[:mood])
+              .watched_on_search(params[:watched_on])
   end
 
   def drama_params
-    params.require(:drama).permit(:title, :genre, :description, :mood, :scene, :is_public)
+    params.require(:drama).permit(:title, :genre, :description, :watched_on, :mood, :scene, :is_public)
   end
 end

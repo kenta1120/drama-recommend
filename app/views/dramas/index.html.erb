@@ -9,6 +9,7 @@
       <%= text_field_tag :title, params[:title], placeholder: "タイトルで検索" %>
       <%= select_tag :genre, options_for_select(Drama::GENRES, params[:genre]), include_blank: "ジャンルで検索" %>
       <%= select_tag :mood, options_for_select(Drama::MOODS, params[:mood]), include_blank: "感情タグで検索" %>
+      <%= text_field_tag :watched_on, params[:watched_on], placeholder: "視聴日で検索" %>
       <%= submit_tag "検索" %>
     </div>
   <% end %>
@@ -22,7 +23,10 @@
         <p>ジャンル：<%= drama.genre %></p>
         <p>感情タグ：<%= drama.mood %></p>
         <p>どんな時に見るのがオススメ？：<%= drama.scene %></p>
-        <p>感想：<%= truncate(drama.description, length: 50) %></p>
+        <% if drama.watched_on.present? %>
+          <p>視聴日：<%= drama.watched_on.strftime("%Y年%m月%d日") %></p>
+        <% end %>
+        <p>感想：<%= drama.description %></p>
         <p>公開状態：<%= drama.is_public? ? "公開中" : "非公開" %></p>
       </div>
     <% end %>

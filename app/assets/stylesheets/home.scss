@@ -8,17 +8,18 @@
   color: #fff;
 }
 
-h1 {
+.hero h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
-p {
+.hero-text {
   font-size: 1.2rem;
-  line-height: 1.6;
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
-.btn-main {
+.btn-cta {
   display: inline-block;
   margin-top: 20px;
   padding: 12px 24px;
@@ -45,7 +46,7 @@ p {
   flex: 1;
 }
 
-.card strong {
+.card h2 {
   display: block;
   font-size: 1.2rem;
   margin-bottom: 10px;

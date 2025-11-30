@@ -20,6 +20,11 @@ class Drama < ApplicationRecord
     where("mood LIKE ?", "%#{mood}%") if mood.present?
   }
 
+  # 視聴日検索
+  scope :watched_on_search, ->(watched_on) {
+    where("to_char(watched_on, 'YYYY-MM-DD') LIKE ?", "#{watched_on}%") if watched_on.present?
+  }
+
   # 公開のみ
   scope :public_dramas, -> { where(is_public: true) }
 

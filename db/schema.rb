@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_09_18_121524) do
+ActiveRecord::Schema.define(version: 2025_11_27_234241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2025_09_18_121524) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_public", default: false, null: false
     t.bigint "user_id"
+    t.date "watched_on"
     t.index ["user_id"], name: "index_dramas_on_user_id"
   end
 

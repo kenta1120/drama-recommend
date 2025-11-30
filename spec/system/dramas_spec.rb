@@ -14,14 +14,16 @@ RSpec.describe "Dramas", type: :system do
       fill_in "drama[title]", with: "テストドラマ"
       select "恋愛", from: "drama[genre]"
       fill_in "drama[description]", with: "これはテスト用のドラマです"
-      fill_in "drama[mood]", with: "感動"
+      select "感動", from: "drama[mood]"
       fill_in "drama[scene]", with: "夜に見たい"
+      find("input[name='drama[watched_on]']").set("2025-11-20")
       check "drama[is_public]"
       click_button "保存"
 
       aggregate_failures do
         expect(page).to have_content "ドラマを登録しました"
         expect(page).to have_content "テストドラマ"
+        expect(page).to have_content "視聴日： 2025年11月20日"
         expect(current_path).to eq(drama_path(Drama.last))
       end
     end

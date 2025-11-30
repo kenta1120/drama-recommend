@@ -65,15 +65,35 @@ RSpec.describe Drama, type: :model do
         expect(result).not_to include(drama_horror)
       end
     end
+  end
 
-    context "when filtering by visibility" do
-      it "公開のみを取得できること" do
-        expect(described_class.public_dramas).to contain_exactly(drama_romance, drama_action)
-      end
+  describe "視聴日スコープ" do
+    let(:user) { create(:user) }
+    let!(:watched_drama) { create(:drama, title: "視聴済みドラマ", watched_on: Date.new(2025, 11, 20), is_public: false, user: user) }
+    let!(:unwatched_drama) { create(:drama, title: "未視聴ドラマ", watched_on: nil, is_public: false, user: user) }
 
-      it "非公開のみ取得できること" do
-        expect(described_class.private_dramas).to contain_exactly(drama_horror)
-      end
+    it "視聴日が一致するものを取得できること" do
+      result = described_class.watched_on_search("2025")
+      expect(result).to include(watched_drama)
+      expect(result).not_to include(unwatched_drama)
+    end
+
+    it "一致しない場合は含まれないこと" do
+      result = described_class.watched_on_search("2024")
+      expect(result).to be_empty
+    end
+  end
+
+  describe "公開、非公開" do
+    let!(:public_drama)  { create(:drama, is_public: true,  user: user) }
+    let!(:private_drama) { create(:drama, is_public: false, user: user) }
+
+    it "公開のみを取得できること" do
+      expect(described_class.public_dramas).to contain_exactly(public_drama)
+    end
+
+    it "非公開のみ取得できること" do
+      expect(described_class.private_dramas).to contain_exactly(private_drama)
     end
   end
 end

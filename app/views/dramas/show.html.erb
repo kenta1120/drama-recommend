@@ -1,9 +1,12 @@
 <div class="drama-show">
   <h1><%= @drama.title %></h1>
   <p><strong>ジャンル: </strong> <%= @drama.genre %></p>
-  <p><strong>感想: </strong> <%= @drama.description %></p>
-  <p><strong>気分: </strong> <%= @drama.mood %></p>
-  <p><strong>シーン: </strong> <%= @drama.scene %></p>
+  <p><strong>感情タグ: </strong> <%= @drama.mood %></p>
+  <p><strong>どんなときに見るのがオススメ？: </strong> <%= @drama.scene %></p>
+  <% if @drama.watched_on.present? %>
+    <p><strong>視聴日：</strong> <%= @drama.watched_on.strftime("%Y年%m月%d日") %></p>
+  <% end %>
+  <p class="description"><strong>感想: </strong> <%= @drama.description %></p>
   <p><strong>公開状態: </strong><%= @drama.is_public? ? "公開中" : "非公開" %></p>
 
   <div class="drama-actions">
