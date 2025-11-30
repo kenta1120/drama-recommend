@@ -11,12 +11,17 @@
 
   <div class="form-element" >
     <%= f.label :mood, "感情タグ" %>
-    <%= f.text_field :mood %>
+    <%= f.select :mood, Drama::MOODS, {prompt: "選択してください" } %>
   </div>
 
   <div class="form-element" >
-    <%= f.label :scene, "生活シーンタグ" %>
+    <%= f.label :scene, "どんな時に見るのがオススメ？" %>
     <%= f.text_field :scene %>
+  </div>
+
+  <div class="form-element">
+    <%= f.label :watched_on, "視聴日"%>
+    <%= f.date_field :watched_on %>
   </div>
 
   <div class="form-element" >
@@ -24,7 +29,7 @@
     <%= f.text_area :description %>
   </div>
 
-  <div class="form-element">
+  <div class="checkbox">
     <%= f.label :is_public, "公開する" %>
     <%= f.check_box :is_public %>
   </div>

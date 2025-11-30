@@ -4,6 +4,9 @@
 気分タグを使って、「どんな気分でどんなドラマを観たか」を振り返ることができます。
 プライベートなメモアプリとして使いつつ、必要に応じて公開・シェアも可能です。
 
+# アプリURL(Heroku)
+https://drama-app-82b1924a525a.herokuapp.com
+
 # アプリ概要
 
 ドラマのタイトル、キャスト、ジャンル、感情タグ、感想を記録
@@ -22,7 +25,7 @@
 # 使用技術
 
 フロントエンド　　HTML / CSS / JavaScript
-バックエンド　　Ruby 3.3.3 / Rails 6.1.3.2
+バックエンド　　Ruby ~> 3.3.3 / Rails ~> 6.1
 データベース　　SQLite3(開発) / Postgre(本番)
 認証　　Devise
 デプロイ　　Heroku
@@ -37,3 +40,24 @@
 タグ・ジャンル・キーワード検索
 公開 / 非公開の切り替え
 RSpec / Capybaraによるテスト整備
+
+# ER図
+　 users
+id
+name
+email
+introduction
+encrypted_password
+avatar
+
+　　⬇︎ has_many
+
+   Drama
+id
+user_id
+title
+genre
+mood
+watched_on
+impression
+is_public
